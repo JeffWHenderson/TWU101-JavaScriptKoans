@@ -13,7 +13,7 @@
  Problem statement:
  Write a program that will compute the auto fare: it should take as arguments the distance traveled in kilometers (d),
  the waiting time in minutes (w), and whether it is night time (n). The assumed auto fare formula is:
- 20 + 8 * (d-1) + 4 * w
+ 20 + 8 * (distanceTraveled-1) + 4 * timeWaiting
  Add 50%, if n=true
 
  (Please note that the above formula is make-belief! Please don't get into a fight with an auto-walla over this formula!)
@@ -39,13 +39,15 @@ function changeElementText(element, answer) {
 }
 
 function fareForRide(distanceTraveled, timeWaiting, isNight) {
-    changeElementText("#distanceTraveled", "some");
-    changeElementText("#timeWaiting", "some");
-    changeElementText("#nightOrDay", "night or day");
-    var fare = "some amount";
+    var fare = (20 + 8 * (distanceTraveled-1) + 4 * timeWaiting);
 
-    // write some code here!
+    if(isNight) {
+      fare *= 1.5
+    }
 
+    changeElementText("#distanceTraveled", distanceTraveled);
+    changeElementText("#timeWaiting", timeWaiting);
+    changeElementText("#nightOrDay", isNight ? "Nighttime" : "Daytime" );
+    
     changeElementText("#fare", fare);
 }
-
